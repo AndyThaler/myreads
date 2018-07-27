@@ -17,6 +17,20 @@ componentDidMount() {
   })
 }
 
+updateShelf = (book, shelf: string) => {
+  BooksAPI.update(book, shelf).then(res => {
+    this.setBooks();
+  })
+}
+
+setBooks() {
+  BooksAPI.getAll().then(res => {
+    this.setState({
+      books: res
+    })
+  })
+}
+
   render() {
     return (
       <div className="app">
