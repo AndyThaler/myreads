@@ -9,10 +9,19 @@ body, .app {
 }
 
 /* main page */
+.title-emblem{
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  background-image: url('./icons/book.png');
+}
+.list-books {
+  background-image: url('./icons/dancing-bricks.png');
+}
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
+  background: #999999;
   text-align: center;
 }
 .list-books-title h1 {

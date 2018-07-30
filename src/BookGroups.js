@@ -22,23 +22,24 @@ class BookGroups extends React.Component {
       return (
         <div className="list-books">
           <div className="list-books-title">
-            <h1>MyReads</h1>
+            <span className="title-emblem"/>
+            <h1>iRead</h1>
           </div>
           <div className="list-books-content">
             <ShelfOrg
-              shelftitle="Currently Reading"
+              shelftitle="iRead"
               books={this.props.booksPlaced.filter(Book => Book.shelf === "currentlyReading")}
               onShelfChange={this.onCatChange}
               key="current"
               />
             <ShelfOrg
-              shelftitle="Wanting To Read"
+              shelftitle="iWant"
               books={this.props.booksPlaced.filter(Book => Book.shelf === "wantToRead")}
               onShelfChange={this.onCatChange}
               key="want"
               />
            <ShelfOrg
-              shelftitle="Already Read"
+              shelftitle="i'veRead"
               books={this.props.booksPlaced.filter(Book => Book.shelf === "read")}
               onShelfChange={this.onCatChange}
               key="read"
