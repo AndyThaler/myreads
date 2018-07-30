@@ -45,10 +45,7 @@ class Search extends React.Component {
   updateShelf(book, shelf) {
    var newBooks = this.state.books.filter(title => title.id === book.id)[0]
    newBooks.shelf = shelf
-   this.setState({
-     books: this.state.books
-   })
-   this.props.onShelfChange(book, shelf)
+   this.props.onShelfChange(newBooks, shelf)
   }
 
 
@@ -94,7 +91,7 @@ class Search extends React.Component {
                         this.updateShelf(book, e.target.value);
                       }}
                     >
-                      <option value="none" disabled>
+                      <option>
                         Move to...
                       </option>
                       <option value="currentlyReading">Currently Reading</option>
