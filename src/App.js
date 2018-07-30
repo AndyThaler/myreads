@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 
 import * as BooksAPI from './BooksAPI'
 import BookGroups from './BookGroups'
+import Search from './Search'
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -41,15 +42,15 @@ setBooks() {
           booksPlaced={this.state.books}
           />}
         />
-        </div>
-      //  <Route path="/search" render={() =>
-      //    <BookGroups
-      //    onShelfChange={this.onShelfChange}
-      //    booksPlaced={this.state.books}
-      //    />}
-    //    />
 
-  //    </div>
+        <Route path="/search" render={() =>
+          <Search
+            onShelfChange={this.updateShelf}
+            booksPlaced={this.state.books}
+          />}
+        />
+
+      </div>
     )
  }
 }

@@ -33,13 +33,13 @@ class BookGroups extends React.Component {
               />
             <ShelfOrg
               shelftitle="Wanting To Read"
-              books={this.props.booksPlaced.filter(Book => Book.shelf === "wantingTo")}
+              books={this.props.booksPlaced.filter(Book => Book.shelf === "wantToRead")}
               onShelfChange={this.onCatChange}
               key="want"
               />
            <ShelfOrg
               shelftitle="Already Read"
-              books={this.props.booksPlaced.filter(Book => Book.shelf === "haveRead")}
+              books={this.props.booksPlaced.filter(Book => Book.shelf === "read")}
               onShelfChange={this.onCatChange}
               key="read"
               />
