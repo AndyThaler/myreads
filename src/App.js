@@ -11,7 +11,7 @@ class BooksApp extends React.Component {
     books: [],
     showSearchPage: false
   }
-
+//After mounting components - get shelf-books from the backend-server
 componentDidMount() {
   BooksAPI.getAll().then(response => {
     this.setState({
@@ -19,7 +19,7 @@ componentDidMount() {
     })
   })
 }
-
+//Update the shelf books
 updateShelf = (book, shelf) => {
   BooksAPI.update(book, shelf).then(res => {
     this.setBooks();

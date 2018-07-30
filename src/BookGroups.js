@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 
 
 class BookGroups extends React.Component {
-  state = {}
 
+  //when the shelf-category changes, update the shelf-visuals
   onCatChange = (bookId: string, e: any) => {
     let shorten = this.props.booksPlaced
     var filteredBook = shorten.filter(Book => Book.id === bookId)[0]
@@ -17,7 +17,7 @@ class BookGroups extends React.Component {
       })
     })
   }
-
+  //Rendering the different shelves into the DOM
     render() {
       return (
         <div className="list-books">

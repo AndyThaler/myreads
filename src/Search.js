@@ -5,20 +5,18 @@ import * as BooksAPI from './BooksAPI'
 import escapeRegExp from 'escape-string-regexp'
 
 class Search extends React.Component {
+  //Adding two variables to the state of the component
   state = {
     query: "",
     books: []
   }
-
+  //changing the search depending on the query input
   updateQuery = (query) => {
     this.setState({ query: query.trim() })
     this.handleSearch(query)
   }
 
-  clearQuery = () => {
-    this.setState({ query: "" })
-  }
-
+  //Searching for the books that already are in my shelf
   filterSearch(books) {
     if(books){
       books.map(book => {
@@ -32,6 +30,7 @@ class Search extends React.Component {
 });
 } else console.log('nothing found')}
 
+  //Searching for the books depending on the search
   handleSearch(query) {
     if(query){
     BooksAPI.search(query, 20).then( response => {
@@ -42,6 +41,7 @@ class Search extends React.Component {
   }else this.setState({ books: []})
   }
 
+  //if a book gets chosen, add it to the shelf
   updateShelf(book, shelf) {
    var newBooks = this.state.books.filter(title => title.id === book.id)[0]
    newBooks.shelf = shelf

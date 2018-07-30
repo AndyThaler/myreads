@@ -1,8 +1,8 @@
 import React from 'react'
 
 class ShelfOrg extends React.Component {
-  state = {}
 
+  //Rendering every book from the shelf into the specific shelves
   render() {
     return (
         <div className="bookshelf">
