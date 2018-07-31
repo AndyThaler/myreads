@@ -19,6 +19,12 @@ class BookGroups extends React.Component {
   }
   //Rendering the different shelves into the DOM
     render() {
+      const shelves = {
+         currentlyReading: ['iRead', 'currentlyReading'],
+         wantToRead: ['iWantToRead', 'wantToRead'],
+         read: ["i'veRead", 'read']
+       }
+
       return (
         <div className="list-books">
           <div className="list-books-title">
@@ -26,28 +32,18 @@ class BookGroups extends React.Component {
             <h1>iRead</h1>
           </div>
           <div className="list-books-content">
-            <ShelfOrg
-              shelftitle="iRead"
-              books={this.props.booksPlaced.filter(Book => Book.shelf === "currentlyReading")}
-              onShelfChange={this.onCatChange}
-              key="current"
-              />
-            <ShelfOrg
-              shelftitle="iWant"
-              books={this.props.booksPlaced.filter(Book => Book.shelf === "wantToRead")}
-              onShelfChange={this.onCatChange}
-              key="want"
-              />
-           <ShelfOrg
-              shelftitle="i'veRead"
-              books={this.props.booksPlaced.filter(Book => Book.shelf === "read")}
-              onShelfChange={this.onCatChange}
-              key="read"
-              />
+          { Object.keys(shelves).map((shelf) =>
+              <ShelfOrg key={shelf}
+                shelf={shelves[shelf][0]}
+                title={shelves[shelf][1]}
+                books={ this.props.booksPlaced.filter(Book => Book.shelf === shelf)}
+                onShelfChange={ () => { this.onCatChange() } }
+                />
+                )}
+            </div>
               <div className="open-search">
                 <Link to="/search">Add a book</Link>
               </div>
-          </div>
         </div>
       )
     }
