@@ -18,7 +18,7 @@ class Search extends React.Component {
 
   //Searching for the books that already are in my shelf
   filterSearch(books) {
-    if(books){
+    if(books.length > 1){
       books.map(book => {
       this.props.booksPlaced.forEach(bookPlaced => {
         if (book.id === bookPlaced.id) book.shelf = bookPlaced.shelf;
