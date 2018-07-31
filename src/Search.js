@@ -22,6 +22,9 @@ class Search extends React.Component {
       books.map(book => {
       this.props.booksPlaced.forEach(bookPlaced => {
         if (book.id === bookPlaced.id) book.shelf = bookPlaced.shelf;
+        else {
+          book.shelf = "none"
+        }
       })
       return book;
     })
@@ -91,7 +94,7 @@ class Search extends React.Component {
                         this.updateShelf(book, e.target.value);
                       }}
                     >
-                      <option>
+                      <option disabled>
                         Move to...
                       </option>
                       <option value="currentlyReading">Currently Reading</option>
