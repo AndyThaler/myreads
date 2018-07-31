@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import * as BooksAPI from './BooksAPI'
-import escapeRegExp from 'escape-string-regexp'
 
 class Search extends React.Component {
   //Adding two variables to the state of the component
@@ -31,7 +30,10 @@ class Search extends React.Component {
     this.setState({
       books: books
 });
-} else console.log('nothing found')}
+} else {
+  console.log('nothing found')
+  this.setState({books: []})
+} }
 
   //Searching for the books depending on the search
   handleSearch(query) {
@@ -53,12 +55,6 @@ class Search extends React.Component {
 
 
   render() {
-    let showingResults
-    if (this.state.query) {
-      const match = new RegExp(escapeRegExp(this.state.query), 'i')
-      showingResults = this.state.books.filter((book) => match.test(book.title || book.authors))
-    } else showingResults = []
-
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -76,9 +72,10 @@ class Search extends React.Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {showingResults.map(book =>
+            {this.state.books.map(book =>
               <li key={book.id} className="book">
                 <div className="book-top">
+                  {book.imageLinks !== undefined && (
                   <div
                     className="book-cover"
                     style={{
@@ -87,6 +84,16 @@ class Search extends React.Component {
                       backgroundImage: "url(" + book.imageLinks.thumbnail + ")"
                     }}
                   />
+                  )}
+                  {book.imageLinks === undefined && (
+                  <div
+                    className="book-cover"
+                    style={{
+                      width: 128,
+                      height: 193,
+                    }}
+                  />
+                  )}
                   <div className="book-shelf-changer">
                     <select
                       value={book.shelf}
